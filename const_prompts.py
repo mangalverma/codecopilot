@@ -1,5 +1,6 @@
 
-PROMPT_beautify_code = "please optimize given python code also please provide only code:\n"
+# PROMPT_beautify_code = "please optimize given python code also please provide only code:\n"
+PROMPT_beautify_code ='Act as a expert code programmer who provides only code no explanation'
 PROMPT_code_score = "rate this code out of 100 "
 PROMPT_add_comments = "add meaningful comments to this code and give output with given input code"
 PROMPT_alternate_code = "suggest optimize version of this code "

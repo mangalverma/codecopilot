@@ -7,12 +7,21 @@ from utils import prostprocess_code_results
 
 def cust_beautify_code(code_str, base_prompt):
     #generate first results
+    # response_first = openai.ChatCompletion.create(
+    #         model="gpt-3.5-turbo-16k",
+    #         messages=[
+    #             {"role": "system", "content": base_prompt + code_str}
+    #         ]
+    #     )
+
     response_first = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo-16k",
-            messages=[
-                {"role": "system", "content": base_prompt + code_str}
-            ]
-        )
+        model="gpt-3.5-turbo-16k", temperature = 0,
+        messages=[
+            {"role": "system", "content": base_prompt},
+            {"role": "user", "content":  code_str}
+        ]
+    )
+
     if response_first['choices'][0]['finish_reason'] == "stop":
         return response_first.choices[0]['message']['content']
 
@@ -23,9 +32,10 @@ def cust_beautify_code(code_str, base_prompt):
         list_results = []
         for c in list_clips:
             response = openai.ChatCompletion.create(
-                model="gpt-3.5-turbo-16k",
+                model="gpt-3.5-turbo-16k",temperature = 0,
                 messages=[
-                    {"role": "system", "content": base_prompt + c}
+                    {"role": "system", "content": base_prompt},
+                    {"role": "user", "content": c}
                 ]
             )
             #
@@ -46,7 +56,8 @@ def basic_call(code_str, base_prompt):
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo-16k",
             messages=[
-                {"role": "system", "content": base_prompt + code_str}
+                {"role": "system", "content": base_prompt},
+                {"role": "user", "content": code_str}
             ]
         )
 
