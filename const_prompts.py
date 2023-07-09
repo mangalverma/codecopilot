@@ -2,7 +2,7 @@
 # PROMPT_beautify_code = "please optimize given python code also please provide only code:\n"
 PROMPT_beautify_code ='Act as a expert code programmer who provides only code no explanation '
 PROMPT_code_score = "Act as a expert code programmer who rates this code out of 100 "
-PROMPT_add_comments = "Act as a expert code programmer who adds meaningful comments with the code, dont write only comments seperately "
+PROMPT_add_comments = "act as expert python coder who can add comments to code"
 PROMPT_alternate_code = "Act as a expert code programmer who can give alternate version of this code "
 PROMPT_preprare_doc = "Act as a expert code programmer who documents this code for office purpose "
 PROMPT_space_time_complexity = "Act as a expert code programmer who can find time and space complexity of this code "
