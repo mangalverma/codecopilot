@@ -23,12 +23,14 @@ def cust_beautify_code(code_str, base_prompt):
     )
 
     if response_first['choices'][0]['finish_reason'] == "stop":
+        print("resopnse only first go")
         return response_first.choices[0]['message']['content']
 
     else:
 
         list_clips = split_based_on_lines(code_str)
         list_clips = [x for x in list_clips if len(x.strip())>0]
+        print("len(list_clips)", len(list_clips))
         list_results = []
         for c in list_clips:
             response = openai.ChatCompletion.create(
