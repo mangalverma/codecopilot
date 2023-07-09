@@ -24,6 +24,7 @@ def cust_beautify_code(code_str, base_prompt):
 
     if response_first['choices'][0]['finish_reason'] == "stop":
         print("resopnse only first go")
+        print(response_first)
         return response_first.choices[0]['message']['content']
 
     else:
