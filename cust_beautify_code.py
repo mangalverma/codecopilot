@@ -18,6 +18,7 @@ def cust_beautify_code(code_str, base_prompt):
             ]
         )
         #
+        print(base_prompt+c)
         if response['choices'][0]['finish_reason'] == "stop":
             list_results.append(response.choices[0]['message']['content'])
         else:
