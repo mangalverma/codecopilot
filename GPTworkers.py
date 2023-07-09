@@ -4,7 +4,7 @@ import streamlit as st
 from git import Repo
 from const_prompts import *
 
-from cust_beautify_code import cust_beautify_code
+from cust_beautify_code import cust_beautify_code, basic_call
 def load_files_from_github(url):
     if url:
      Repo.clone_from(url,'/git_clones')
@@ -67,7 +67,7 @@ def get_code_testcases(code_str):
 
 def get_code_snippets(code_str):
     if code_str:
-        return cust_beautify_code(code_str, PROMPT_code_snippet_gen)
+        return basic_call(code_str, PROMPT_code_snippet_gen)
     else:
         return "please add text"
 

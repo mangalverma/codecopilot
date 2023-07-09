@@ -10,7 +10,6 @@ def cust_beautify_code(code_str, base_prompt):
     list_clips = [x for x in list_clips if len(x.strip())>0]
     list_results = []
     for c in list_clips:
-
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo-16k",
             messages=[
@@ -18,7 +17,6 @@ def cust_beautify_code(code_str, base_prompt):
             ]
         )
         #
-        print(base_prompt+c)
         if response['choices'][0]['finish_reason'] == "stop":
             list_results.append(response.choices[0]['message']['content'])
         else:
@@ -27,6 +25,21 @@ def cust_beautify_code(code_str, base_prompt):
         # print("inide chatgpt")
 
     return "\n".join(list_results)
+
+def basic_call(code_str, base_prompt):
+    if len(code_str)>0:
+
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo-16k",
+            messages=[
+                {"role": "system", "content": base_prompt + code_str}
+            ]
+        )
+
+        return response.choices[0]['message']['content']
+
+    else:
+        return ""
 
 
 
